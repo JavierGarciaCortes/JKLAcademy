@@ -1,0 +1,81 @@
+/* Add fonts */
+@font-face {
+	font-family: BrushScript;
+	src: url(../fonts/NanumBrushScript-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: Acme;
+	src: url(../fonts/Acme-Regular.ttf) format('truetype');
+}
+
+@font-face {
+	font-family: HindVadodara;
+	src: url(../fonts/HindVadodara-Regular.ttf) format('truetype');
+}
+
+.text-brush {
+	font-family: BrushScript;
+	font-size: 1.5rem;
+}
+
+/* General*/
+body {
+	font-family: HindVadodara !important;
+}
+
+img {
+	vertical-align: bottom;
+	max-width: 100%;
+}
+
+input {
+	margin: 15px;
+	padding: 10px 15px;
+	width: 100%;
+}
+
+header {
+	background-color: aliceblue;
+	z-index: 99;
+}
+
+.footer {
+	position: relative;
+	box-sizing: border-box;
+}
+
+#titulo:hover {
+	text-decoration: none;
+}
+
+#titulo {
+	font-family: Acme;
+}
+
+.JnavImage {
+	display: none;
+}
+
+/* index.php */
+.bannertitulo {
+	margin-top: 60px;
+}
+
+/* FormularioLogin.php */
+#box {
+	max-width: 350px;
+	margin: auto;
+}
+
+
+
+@media only screen and (max-width:768px) {
+	.Jimage {
+		display: none;
+	}
+
+	.JnavImage {
+		display: block;
+	}
+}
