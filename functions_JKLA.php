@@ -1,6 +1,6 @@
 <?php
 // datos base para conectar con BD
-include '../../Privado/BBDD_jacademy_connection.php';
+include '../../Privado/bd_jacademy_connection.php';
 // funciones generales
 function conecta ($dbHost, $dbUser, $dbPass, $dbName){
     $db= new mysqli ($dbHost, $dbUser, $dbPass, $dbName);
@@ -101,9 +101,9 @@ function addstudent($name, $email, $mobile, $city, $address, $day, $c_start, $ti
     $sql="INSERT INTO users (user_name,  user_email, user_mobile, city, address, day, c_start, time, c_type, pr_class, pr_trans, user_registered, user_status) VALUES ( '$name', '$email', '$mobile', '$city', '$address', '$day', '$c_start', '$time', '$c_type', '$pr_class', '$pr_trans', '$diahoy', 'STUDENT')";
 	$db->query($sql);
 }   	// ADD STUDENT
-function addlvlstudent($id_student, $state, $starting_day, $text_book, $focus_on, $comprehension){
+function addlvlstudent($id_student, $state, $text_book, $focus_on, $comprehension){
 	$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
-    $sql="INSERT INTO level (id_student, state, starting_day, text_book, focus_on, comprehension) VALUES ( '$id_student', '$state', '$starting_day', '$text_book', '$focus_on', '$comprehension')";
+    $sql="INSERT INTO level (id_student, state, text_book, focus_on, comprehension) VALUES ( '$id_student', '$state', '$text_book', '$focus_on', '$comprehension')";
 	$db->query($sql);
 }						// ADD LVL STUDENT
 function addpass($user_id, $user_pass){

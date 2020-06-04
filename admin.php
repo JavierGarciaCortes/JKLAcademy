@@ -62,11 +62,10 @@ if ($_SESSION['acceso']!=1){
 	if(isset($_POST['AddLvl'])){
 		$id_student=filtrarResU8($_POST['numIdL']);
 		$state=filtrarResU8($_POST['state']);
-		$starting_day=filtrarResU8($_POST['startingDate']);
 		$text_book=filtrarResU8($_POST['textbook']);
 		$focus_on=filtrarResU8($_POST['focuson']);
 		$comprehension=filtrarResU8($_POST['comprehension']);
-		addlvlstudent($id_student, $state, $starting_day, $text_book, $focus_on, $comprehension);
+		addlvlstudent($id_student, $state, $text_book, $focus_on, $comprehension);
 	}		// Add lvl student
 	if(isset($_POST['AddPass'])){
 		$id_student=filtrarResU8($_POST['numIdP']);
@@ -512,10 +511,6 @@ if ($_SESSION['acceso']!=1){
 							<option value="Advance">Advance</option>
 						</select>
 					</div>
-				</div>
-				<div class="form-group row d-flex align-items-center">
-					<label class="m-0" for="startingDate">Starting Date</label>
-					<input class="form-control m-0" type="date" name="startingDate">
 				</div>
 				<div class="form-group row d-flex align-items-center">
 					<label class="m-0" for="textbook">Textbook</label>
