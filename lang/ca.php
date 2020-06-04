@@ -1,5 +1,9 @@
 <?php
 // Definimos todas las palabras en catalan en arrays
+// Msj
+$msj = array (
+	"01" => "Aviat introduirem contingut",
+);
 // navbar
 $nav = array(
 	"N_01" => "Inici",

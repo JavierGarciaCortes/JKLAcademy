@@ -32,7 +32,7 @@ if ($_SESSION['acceso']!=1){
 		$c_type=filtrarResU8($_POST['c_type']);
 		$pr_class=filtrarResU8($_POST['classp']);
 		$pr_trans=filtrarResU8($_POST['transp']);
-		$sql= "UPDATE students SET day='{$day}', c_start='{$c_start}', time='{$time}', c_type='{$c_type}', pr_class='{$pr_class}', pr_trans='{$pr_trans}' WHERE id_student ={$id}";
+		$sql= "UPDATE users SET day='{$day}', c_start='{$c_start}', time='{$time}', c_type='{$c_type}', pr_class='{$pr_class}', pr_trans='{$pr_trans}' WHERE user_id={$id}";
 		$db->query($sql);
 	} 		// Modify student information
 	if(isset($_POST['modiflvl'])){
@@ -57,7 +57,7 @@ if ($_SESSION['acceso']!=1){
 		$c_type=filtrarResU8($_POST['c_type']);
 		$pr_class=filtrarResU8($_POST['pr_class']);
 		$pr_trans=filtrarResU8($_POST['pr_trans']);
-		addstudent($name, $email, $mobile, $city, $address, $day, $c_start, $time, $c_type, $pr_class, $pr_trans);
+		addstudent($name, $email, $mobile, $city, $address, $day, $c_start, $time, $c_type, $pr_class, $pr_trans, $diahoy);
 	}	// Add new student
 	if(isset($_POST['AddLvl'])){
 		$id_student=filtrarResU8($_POST['numIdL']);
@@ -341,9 +341,9 @@ if ($_SESSION['acceso']!=1){
 			<div class="col-sm-6 col-md-3 border p-3 mb-2 bg-info text-dark align-self-start" style="font-size: 13px; ">
 				<?php 
 					$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
-					$sql= "SELECT count(*) as num FROM students WHERE c_type='Home' && day!='Stop'";
-					$sql1= "SELECT count(*) as num FROM students WHERE c_type='Online' && day!='Stop'";
-					$sql2= "SELECT count(*) as num FROM students WHERE c_type='Academy' && day!='Stop'";
+					$sql= "SELECT count(*) as num FROM users WHERE c_type='Home' && day!='Stop'";
+					$sql1= "SELECT count(*) as num FROM users WHERE c_type='Online' && day!='Stop'";
+					$sql2= "SELECT count(*) as num FROM users WHERE c_type='Academy' && day!='Stop'";
 					$resultados = $db->query($sql);
 					$resultados1 = $db->query($sql1);
 					$resultados2 = $db->query($sql2);
@@ -365,7 +365,7 @@ if ($_SESSION['acceso']!=1){
 				<div class="col-auto">
 					<?php 
 					$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
-					$sql= "SELECT count(*) as num FROM students WHERE day!='Stop'";
+					$sql= "SELECT count(*) as num FROM users WHERE day!='Stop' AND `user_status`='STUDENT';";
 					$resultados = $db->query($sql);
 					$active=$resultados->fetch_assoc();
 					echo '<button id="showStudentsPanel" class="btn btn-link"><strong>'.$active['num'].' ACTIVE STUDENTS</strong></button>';
@@ -376,7 +376,7 @@ if ($_SESSION['acceso']!=1){
 				<div class="col-auto">
 					<?php 
 					$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
-					$sql0= "SELECT count(*) as num FROM students WHERE day='Stop'";
+					$sql0= "SELECT count(*) as num FROM users WHERE day='Stop'";
 					$resultados0 = $db->query($sql0);
 					$stop=$resultados0->fetch_assoc();
 					echo '<button id="showInStudentsPanel" class="btn btn-link"><strong>'.$stop['num'].' INACTIVE STUDENTS</strong></button>';
@@ -387,8 +387,8 @@ if ($_SESSION['acceso']!=1){
 				<div class="col-auto">
 					<?php 
 					$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
-					$sql= "SELECT SUM((pr_class*a.time)+pr_trans) as total FROM students s JOIN assist a ON s.id_student=a.id_student WHERE a.day LIKE '_____".$month."___'";
-					$sql2= "SELECT count(*) as num FROM students s JOIN assist a ON s.id_student=a.id_student WHERE a.day LIKE '_____".$month."___'";
+					$sql= "SELECT SUM((pr_class*a.time)+pr_trans) as total FROM users s JOIN assist a ON s.user_id=a.id_student WHERE a.day LIKE '_____".$month."___'";
+					$sql2= "SELECT count(*) as num FROM users s JOIN assist a ON s.user_id=a.id_student WHERE a.day LIKE '_____".$month."___'";
 					$resultados = $db->query($sql);
 					$resultados2 = $db->query($sql2);
 					$num_class_month=$resultados2->fetch_assoc();
@@ -489,7 +489,7 @@ if ($_SESSION['acceso']!=1){
 						<label class="m-0" for="">Student</label>
 						<?php 
 						$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
-						$sql= "SELECT id_student, name FROM students s WHERE s.id_student NOT IN (SELECT id_student FROM `level`) AND `day`!='Stop';";
+						$sql= "SELECT user_id, user_name FROM users WHERE user_id NOT IN (SELECT id_student FROM `level`) AND `day`!='Stop' AND `user_status`='STUDENT';";
 						$resultados = $db->query($sql);
 						$rows=$resultados->num_rows;
 						for($i=0; $i<$rows; $i++){
@@ -498,7 +498,7 @@ if ($_SESSION['acceso']!=1){
 						}
 						echo '<select class="form-control" name="numIdL">';
 						for($i = 0; $i < count($list); $i++){
-							echo "<option value='".$list[$i]['id_student']."'>".$list[$i]['name']."</option>";
+							echo "<option value='".$list[$i]['user_id']."'>".$list[$i]['user_name']."</option>";
 						}
 						echo '</select>';
 					?>
@@ -560,7 +560,7 @@ if ($_SESSION['acceso']!=1){
 						<label class="m-0" for="">Student</label>
 						<?php 
 						$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
-						$sql= "SELECT id_student, name FROM students s WHERE s.id_student NOT IN (SELECT id_student FROM pass) AND `day`!='Stop';";
+						$sql= "SELECT user_id, user_name FROM users WHERE `user_pass`='' AND `day`!='Stop' AND `user_status`='STUDENT';";
 						$resultados = $db->query($sql);
 						$rows=$resultados->num_rows;
 						for($i=0; $i<$rows; $i++){
@@ -569,7 +569,7 @@ if ($_SESSION['acceso']!=1){
 						}
 						echo '<select class="form-control" name="numIdP">';
 						for($i = 0; $i < count($list2); $i++){
-							echo "<option value='".$list2[$i]['id_student']."'>".$list2[$i]['name']."</option>";
+							echo "<option value='".$list2[$i]['user_id']."'>".$list2[$i]['user_name']."</option>";
 						}
 						echo '</select>';
 					?>
@@ -675,7 +675,7 @@ if ($_SESSION['acceso']!=1){
 				foreach($lista as $valor){
 						echo "<tr>\n ";
         				echo "<form action=".$_SERVER['PHP_SELF']." method='post'>";
-						echo "<td class='p-0 text-center align-middle'><button class='btn-dark btn-sm w-100' type='submit' name='assist' value='".utf8_decode($valor['id_student'])."'>".utf8_decode($valor['name'])."</button></td>"; 
+						echo "<td class='p-0 text-center align-middle'><button class='btn-dark btn-sm w-100' type='submit' name='assist' value='".utf8_decode($valor['user_id'])."'>".utf8_decode($valor['user_name'])."</button></td>"; 
 						echo "<td class='p-0'>".utf8_decode($valor['day'])."</td>";
 						echo "<td class='p-0 text-center align-middle'><input class='text-center' type='date' name='day' value='".$diahoy."'></td>";
 						echo "<td class='p-0 text-center align-middle'><input class='text-center' type='number' name='time' value=".$valor['time']."></td>";
@@ -701,7 +701,7 @@ if ($_SESSION['acceso']!=1){
     						    echo "<tr>\n ";
     						    echo "<form method='post'>";
     						    echo "<td class='text-center align-middle'><button class='btn btn-secondary btn-sm' type='submit' name='ereaseA' value='".utf8_decode($datos[$i]['id_assist'])."'>X</button></td>";
-    						    echo "<td class='text-center align-middle'>".utf8_decode($datos[$i]['name'])."</td>";
+    						    echo "<td class='text-center align-middle'>".utf8_decode($datos[$i]['user_name'])."</td>";
 								echo "<td class='text-center align-middle'>".utf8_decode($datos[$i]['day'])."</td>";
     						    echo "</form>";
     						    echo "</tr>\n ";

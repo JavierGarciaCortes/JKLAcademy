@@ -1,5 +1,9 @@
 <?php
 // Definimos todas las palabras en castellano en arrays
+// Msj
+$msj = array (
+	"01" => "Nous allons bientôt introduire du contenu",
+);
 // navbar
 $nav = array(
 	"N_01" => "Démarrer",

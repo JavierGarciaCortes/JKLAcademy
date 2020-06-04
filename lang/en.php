@@ -1,5 +1,9 @@
 <?php
 // Definimos todas las palabras en ingles en arrays
+// Msj
+$msj = array (
+	"01" => "We will soon introduce content",
+);
 // navbar
 $nav = array(
 	"N_01" => "Home",
@@ -8,7 +12,7 @@ $nav = array(
 	"N_04" => "Food",
 	"N_05" => "Where to eat?",
 	"N_06" => "What to visit?",
-	"N_07" => "Customs",
+	"N_07" => "Manners",
 	"N_08" => "Close session"
 );
 // index.php
