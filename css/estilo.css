@@ -3,12 +3,10 @@
 	font-family: BrushScript;
 	src: url(../fonts/NanumBrushScript-Regular.ttf) format('truetype');
 }
-
 @font-face {
 	font-family: Acme;
 	src: url(../fonts/Acme-Regular.ttf) format('truetype');
 }
-
 @font-face {
 	font-family: HindVadodara;
 	src: url(../fonts/HindVadodara-Regular.ttf) format('truetype');
@@ -23,36 +21,29 @@
 body {
 	font-family: HindVadodara !important;
 }
-
 img {
 	vertical-align: bottom;
 	max-width: 100%;
 }
-
 input {
 	margin: 15px;
 	padding: 10px 15px;
 	width: 100%;
 }
-
 header {
 	background-color: aliceblue;
 	z-index: 99;
 }
-
 .footer {
 	position: relative;
 	box-sizing: border-box;
 }
-
 #titulo:hover {
 	text-decoration: none;
 }
-
 #titulo {
 	font-family: Acme;
 }
-
 .JnavImage {
 	display: none;
 }
@@ -68,6 +59,57 @@ header {
 	margin: auto;
 }
 
+/* blogs */
+#masinfo{
+    position: fixed;
+    top: 0px;
+	left: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0, 0.8);
+    display: none;
+}
+#post_grande{
+    display: flex;
+    position: absolute;
+    width: 95%;
+    height: calc(100vh - 90px);
+    border:1px solid black;
+    border-radius: 9px;
+    background-color: white;
+    margin: auto;
+    top: 58px;
+    left: 0;
+    right: 0;
+    align-items: center;
+    text-align: center;
+	
+}
+#prev, #next{
+    background-color: lightgrey;
+    height: 50px;
+    width: 50px;    
+}
+div#prev:hover {background-color: darkgray; cursor:pointer;}
+div#next:hover {background-color: darkgray; cursor:pointer;}
+#next { transform: rotate(180deg)}
+#caja_post{
+    width: 90%;  
+	height: 100%;
+	overflow-y: auto;
+	box-sizing: border-box;
+}
+#cerrar{
+    position: absolute;
+    right: 5px;
+    top:5px;
+    width: 15px;
+    border: 1px solid black;
+    box-shadow: 0 0 7px black;
+    border-radius: 3px;
+    background-color: lightgrey;
+}
+div#cerrar:hover {background-color: darkgray; cursor:pointer;}
 
 
 @media only screen and (max-width:768px) {
