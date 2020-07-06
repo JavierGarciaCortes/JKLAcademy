@@ -351,7 +351,7 @@ function tableStudentsEditIn(){
 function asistencia(){
 	$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
     $datos=[];
-    $sql="SELECT user_id, user_name, day, time FROM users_classes WHERE classes_week!='0' AND `user_status`='STUDENT' ORDER BY FIELD(day, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY')";
+    $sql="SELECT user_id, user_name, day, time, pr_class, pr_trans FROM users_classes WHERE classes_week!='0' AND `user_status`='STUDENT' ORDER BY FIELD(day, 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY')";
     $resultados = $db->query($sql);
     $rows=$resultados->num_rows;
     for($i=0; $i<$rows; $i++){

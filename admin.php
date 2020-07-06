@@ -187,7 +187,10 @@ if ($_SESSION['acceso']!=1){
 		$id_student=$_POST['assist'];
 		$day=$_POST['day'];
 		$time=$_POST['time'];
-		$sql= "INSERT INTO assist (id_student, day, time) VALUES ( '$id_student', '$day', '$time')";
+        $pr_class=$_POST['pr_class'];
+        $pr_trans=$_POST['pr_trans'];
+        $paid = $pr_class * $time + $pr_trans;
+		$sql= "INSERT INTO assist (user_id, day, time, paid) VALUES ( '$id_student', '$day', '$time','$paid')";
 		$db->query($sql);
 	}		// Add assistence
 	if(isset($_POST['ereaseA'])){
@@ -677,6 +680,8 @@ if ($_SESSION['acceso']!=1){
 				echo "<th class='text-center'>DAY</th>";
 				echo "<th class='text-center'>DATE</th>";
 				echo "<th class='text-center'>DURATION</th>";
+                echo "<th class='text-center'>€/h</th>";
+                echo "<th class='text-center'>€ Trasnport</th>";
     			echo "<thead></tr>";
 				echo '<tbody>';
 				foreach($lista as $valor){
@@ -685,7 +690,9 @@ if ($_SESSION['acceso']!=1){
 						echo "<td class='p-0 text-center align-middle'><button class='btn-dark btn-sm w-100' type='submit' name='assist' value='".utf8_decode($valor['user_id'])."'>".utf8_decode($valor['user_name'])."</button></td>"; 
 						echo "<td class='p-0'>".utf8_decode($valor['day'])."</td>";
 						echo "<td class='p-0 text-center align-middle'><input class='text-center' type='date' name='day' value='".$diahoy."'></td>";
-						echo "<td class='p-0 text-center align-middle'><input class='text-center' type='number' name='time' value=".$valor['time']."></td>";
+						echo "<td class='p-0 text-center align-middle'><input class='text-center' type='number' name='time' value=".$valor['time']." step='0.5'></td>";
+                        echo "<td class='p-0 text-center align-middle'><input class='text-center' type='number' name='pr_class' value=".$valor['pr_class']."></td>";
+                        echo "<td class='p-0 text-center align-middle'><input class='text-center' type='number' name='pr_trans' value=".$valor['pr_trans']."></td>";
 						echo "</form>";
         				echo "</tr>\n ";									
 				}
@@ -724,7 +731,6 @@ if ($_SESSION['acceso']!=1){
         <div class="row d-flex justify-content-center" id="alumno">
         </div>
     </div>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
