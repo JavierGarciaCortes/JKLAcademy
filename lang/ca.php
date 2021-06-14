@@ -17,9 +17,14 @@ $nav = array(
 );
 // index.php
 $index = array(
-	"MD" => "Acadèmia de Coreà. Aprendre Coreà (Hangul). Blog sobre Corea.",
-	"MK" => "Acadèmia, Aprendre, Coreà, Hangul, Bloc, Corea",
-	"T-p" => "JKL Acadèmia",
+	"MD" => "A l'acadèmia d'idioma coreà de Jeongye aprendràs coreà de forma fàcil i divertida. T'esperem. Love Korea! ❤",
+	"MK" => "Acadèmia de coreà barcelona, aprendre coreà barcelona, acadèmia d'idiomes barcelona, Acadèmia de coreà, aprendre coreà, acadèmia d'idiomes, idioma coreà, classes de coreà, classes en línia, classes presencials, curs coreà, coreà online, aprendre, Coreà, Hangul, Blog, Corea, Blog sobre Corea",
+	"T-p0" => "JKL Acadèmia | Classes de coreà - Blog sobre Corea",
+    "T-p4" => "JKL Acadèmia | Menjar",
+    "T-p5" => "JKL Acadèmia | ¿On menjar?",
+    "T-p6" => "JKL Acadèmia | ¿Què Visitar?",
+    "T-p7" => "JKL Acadèmia | Costums",
+    "T-h" => "JKL Acadèmia",
 	"T_01" => "Acadèmia d'idioma coreà de Jeongye",
 	"T_02" => "Estima Corea",
 	"M_A_T_01" => "T'agrada la cultura Coreana?",
@@ -33,13 +38,13 @@ $index = array(
 );
 // FormularioLogin.php
 $flogin = array(
-	"T-p" => "Entra · JKL Acadèmia",
-"L_01" => "Benvingut a <strong> JKL Acadèmia </strong>.",
-"L_02" => "Si us plau accedeix al teu compte",
-"L_03" => "← Tornar a JKL Acadèmia",
-"F_01" => "USUARI",
-"F_02" => "CONTRASENYA",
-"F_03" => "CONFIRMAR",
+	"T-p" => "JKL Acadèmia | Entra",
+    "L_01" => "Benvingut a <strong> JKL Acadèmia </strong>.",
+    "L_02" => "Si us plau accedeix al teu compte",
+    "L_03" => "← Tornar a JKL Acadèmia",
+    "F_01" => "USUARI",
+    "F_02" => "CONTRASENYA",
+    "F_03" => "CONFIRMAR",
 );
 // Login.php
 $login = array(
@@ -47,7 +52,7 @@ $login = array(
 );
 // ZonaAlumno.php
 $alumno = array (
- 	"T-p" => "Zona alumne · JKL Acadèmia",
+ 	"T-p" => "JKL Acadèmia | Zona alumne",
 	"Er" => "Per accedir a la Zona Alumnes cal ser alumne i identificar-se.",
 );
 

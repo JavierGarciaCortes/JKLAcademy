@@ -15,7 +15,7 @@ require 'idioma.php';
 	<meta name="description" content="<?php echo $index["MD"]; ?>" />
 	<meta name="keywords" content="<?php echo $index["MK"]; ?>">
 	<meta name="robots" content="NOODP">
-	<title><?php echo $index["T-p"]; ?></title>
+	<title><?php echo $index["T-p4"]; ?></title>
 	<link rel="icon" type="image/png" href="img/icono.png" sizes="32x32">
 	<link rel="stylesheet" href="css/estilo.css" type="text/css" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">

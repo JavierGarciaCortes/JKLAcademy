@@ -1,5 +1,5 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 session_start();
 $hoy = getdate();
 if($hoy['mday'] <= 9 ){
@@ -51,7 +51,7 @@ if ($_SESSION['acceso']!=1){
 	} 	// Erease Class
     if(isset($_POST['modifIn'])){
 		$db=conecta(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME );
-		$id=filtrarResU8($_POST['modif']);
+		$id=filtrarResU8($_POST['modifIn']);
 		$day=filtrarResU8($_POST['day']);
 		$c_start=filtrarResU8($_POST['hstart']);
 		$time=filtrarResU8($_POST['time']);
@@ -59,7 +59,9 @@ if ($_SESSION['acceso']!=1){
 		$pr_class=filtrarResU8($_POST['classp']);
 		$pr_trans=filtrarResU8($_POST['transp']);
         $classes_week=filtrarResU8($_POST['classes_week']);
-		$sql= "UPDATE users_classes SET day='{$day}', c_start='{$c_start}', time='{$time}', c_type='{$c_type}', pr_class='{$pr_class}', pr_trans='{$pr_trans}' WHERE user_id={$id}";
+		$sql= "UPDATE users SET classes_week='{$classes_week}', pr_class='{$pr_class}', pr_trans='{$pr_trans}' WHERE user_id={$id}";
+		$db->query($sql);
+        $sql= "INSERT INTO classes (user_id, day, c_start, time, c_type) VALUES ( '$id', '$day', '$c_start','$time', '$c_type')";
 		$db->query($sql);
 	} 		// Modify student information
 	if(isset($_POST['modiflvl'])){
@@ -136,7 +138,7 @@ if ($_SESSION['acceso']!=1){
 			$contenido .='<p> Mi teléfono es 640641389. Podemos estar en contacto por WhatsApp.</p>';
 		}
 		if(isset($_POST['test'])){
-			$contenido .='<p>Aquí puedes descargar el <a href="http://www.javiergarciacortes.com/JA/ficheros/ActivityHangulTest.pdf" download="Acme Documentation (ver. 2.0.1).txt" target="_blank">Test</a> de nivel y los <a href="http://www.javiergarciacortes.com/JA/ficheros/ActivityHangulAudioTest.zip" download="Acme Documentation (ver. 2.0.1).txt" target="_blank">Audios</a> que necesitaras para el test. En cuanto lo tengas hecho, mándamelo para preparar la clase y mandarte el material que usaremos.</p>';
+			$contenido .='<p>Aquí puedes descargar el <a href="http://jkl.academy/ficheros/ActivityHangulTest.pdf" download="Acme Documentation (ver. 2.0.1).txt" target="_blank">Test</a> de nivel y los <a href="http://jkl.academy/ficheros/ActivityHangulAudioTest.zip" download="Acme Documentation (ver. 2.0.1).txt" target="_blank">Audios</a> que necesitaras para el test. En cuanto lo tengas hecho, mándamelo para preparar la clase y mandarte el material que usaremos.</p>';
 		}
 		
 		
@@ -496,8 +498,8 @@ if ($_SESSION['acceso']!=1){
                     <div class="col-12 col-sm-4">
                         <label class="m-0" for="c_type">TYPE OF CLASS</label>
                         <select class="form-control" name="c_type">
+                           <option value="Online">Online</option>
                             <option value="Academy">Academy</option>
-                            <option value="Online">Online</option>
                             <option value="Home">Home</option>
                         </select>
                     </div>
@@ -658,7 +660,7 @@ if ($_SESSION['acceso']!=1){
                     </div>
                     <div class="col-6 p-0">
                         <label class="m-0" for="pr_trans">TRANSPORTATION PRICE</label>
-                        <input class="form-control" type="number" name="pr_trans" value="4" required min="0" maxlength="2">
+                        <input class="form-control" type="number" name="pr_trans" value="5" required min="0" maxlength="2">
                     </div>
                 </div>
                 <div class="row">
@@ -701,28 +703,27 @@ if ($_SESSION['acceso']!=1){
 			?>
             </div> <!-- Add assistencia -->
             <div class="" id="Assistance">
-                <?php 							
-					$datos = asistencia_month($month);
+                <?php 	
+                    $datos = asistencia_month($month);
 					echo "<table class='table table-hover table-warning table-sm'>";
-    						echo "<thead class='bg-warning'><tr>";
-							echo "<th class='text-center'>EREASE</th>";
-							echo "<th class='text-center'>STUDENT</th>";
-							echo "<th class='text-center'>DAY</th>";
-    						echo "<thead></tr>";
-    						$numRes=count($datos);
-							echo '<tbody>';
-    						for  ($i=0; $i<$numRes; $i++){
-    						    echo "<tr>\n ";
-    						    echo "<form method='post'>";
-    						    echo "<td class='text-center align-middle'><button class='btn btn-secondary btn-sm' type='submit' name='ereaseA' value='".utf8_decode($datos[$i]['id_assist'])."'>X</button></td>";
-    						    echo "<td class='text-center align-middle'>".utf8_decode($datos[$i]['user_name'])."</td>";
-								echo "<td class='text-center align-middle'>".utf8_decode($datos[$i]['day'])."</td>";
-    						    echo "</form>";
-    						    echo "</tr>\n ";
-    						}
-							echo '</tbody>';
-    						echo "</table>";
-					
+    				echo "<thead class='bg-warning'><tr>";
+					echo "<th class='text-center'>EREASE</th>";
+					echo "<th class='text-center'>STUDENT</th>";
+					echo "<th class='text-center'>DAY</th>";
+    				echo "<thead></tr>";
+    				$numRes=count($datos);
+					echo '<tbody>';
+    				for  ($i=0; $i<$numRes; $i++){
+    				    echo "<tr>\n ";
+    				    echo "<form method='post'>";
+    				    echo "<td class='text-center align-middle'><button class='btn btn-secondary btn-sm' type='submit' name='ereaseA' value='".utf8_decode($datos[$i]['id_assist'])."'>X</button></td>";
+    				    echo "<td class='text-center align-middle'>".utf8_decode($datos[$i]['user_name'])."</td>";
+						echo "<td class='text-center align-middle'>".utf8_decode($datos[$i]['day'])."</td>";
+    				    echo "</form>";
+    				    echo "</tr>\n ";
+    				}
+					echo '</tbody>';
+    				echo "</table>";
 						?>
             </div> <!-- tabla Assistance -->
         </div>
@@ -736,7 +737,6 @@ if ($_SESSION['acceso']!=1){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
 </html>
 <?php
 	}  // Cierre de else $_SESSION['acceso']==1

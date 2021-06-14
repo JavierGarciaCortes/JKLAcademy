@@ -1,6 +1,8 @@
 <?php
 // datos base para conectar con BD
-include '../../Privado/bd_jacademy_connection.php';
+include '../../Privado/connection.php';
+const DB_NAME = "jacademy";
+
 // funciones generales
 function conecta ($dbHost, $dbUser, $dbPass, $dbName){
     $db= new mysqli ($dbHost, $dbUser, $dbPass, $dbName);
@@ -335,13 +337,13 @@ function tableStudentsEditIn(){
         echo "<tr>\n ";
         echo "<form action=".$_SERVER['PHP_SELF']." method='post'>";
         echo "<td class='text-center'><button class='btn btn-dark btn-sm w-100' type='submit' name='modifIn' value='".utf8_decode($datos[$i]['user_id'])."'>".utf8_decode($datos[$i]['user_name'])."</button></td>";
-        echo "<td class='text-center align-middle'><input class='form-control form-control-sm  w-100' type='number' name='classes_week' style='width:65px' value='".utf8_decode($datos[$i]['classes_week'])."' class='i-pr'></td>";
-		echo "<td class='text-center align-middle'><select class='form-control form-control-sm' name='day' style='width:120px'><option value='Monday'>Monday</option><option value='Tuesday'>Tuesday</option><option value='Wednesday'>Wednesday</option><option value='Thursday'>Thursday</option><option value='Friday'>Friday</option><option value='Saturday'>Saturday</option><option value='Stop'>Stop</option></select></td>";
-		echo "<td class='text-center align-middle'><input class='form-control form-control-sm' type='time' name='hstart' style='width:85px' ></td>";
-		echo "<td class='text-center align-middle'><input class='form-control form-control-sm' type='number' name='time' style='width:65px' step='0.5' max='2' min='1'></td>";
-		echo "<td class='text-center align-middle'><select class='form-control form-control-sm' name='c_type' style='width:105px'><option value='Academy'>Academy</option><option value='Online'>Online</option><option value='Home'>Home</option></select></td>";
-		echo "<td class='text-center align-middle'><input class='form-control form-control-sm' type='number' name='classp' style='width:65px' value='".utf8_decode($datos[$i]['pr_class'])."' class='i-pr'></td>";
-		echo "<td class='text-center align-middle'><input class='form-control form-control-sm' type='number' name='transp' style='width:65px' value='".utf8_decode($datos[$i]['pr_trans'])."' class='i-pr'></td>";
+        echo "<td class='text-center align-middle'><input class='form-control form-control-sm  w-100' type='number' min='1' max='3' value='1' name='classes_week' style='width:65px' value='".utf8_decode($datos[$i]['classes_week'])."' class='i-pr'></td>";
+		echo "<td class='text-center align-middle'><select class='form-control form-control-sm' name='day' style='width:120px'><option value='Monday'>Monday</option><option value='Tuesday'>Tuesday</option><option value='Wednesday'>Wednesday</option><option value='Thursday'>Thursday</option><option value='Friday'>Friday</option><option value='Saturday'>Saturday</option></select></td>";
+		echo "<td class='text-center align-middle'><input class='form-control form-control-sm' type='time' required name='hstart' style='width:85px' ></td>";
+		echo "<td class='text-center align-middle'><input class='form-control form-control-sm' type='number' name='time' style='width:65px' step='0.5' max='2' min='1' value='1'></td>";
+		echo "<td class='text-center align-middle'><select class='form-control form-control-sm' name='c_type' style='width:105px'><option value='Online'>Online</option><option value='Academy'>Academy</option><option value='Home'>Home</option></select></td>";
+		echo "<td class='text-center align-middle'><input step='0.5' class='form-control form-control-sm' type='number' name='classp' style='width:65px' value='".utf8_decode($datos[$i]['pr_class'])."' class='i-pr'></td>";
+		echo "<td class='text-center align-middle'><input step='0.5' class='form-control form-control-sm' type='number' name='transp' style='width:65px' value='".utf8_decode($datos[$i]['pr_trans'])."' class='i-pr'></td>";
         echo "</form>";
         echo "</tr>\n ";
     }

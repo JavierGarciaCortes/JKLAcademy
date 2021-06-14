@@ -4,7 +4,7 @@
 			<div class="mr-5 JnavImage">
 				<img src="img/Jeongye.png" alt="JLK Academy" height="40px">
 			</div>
-			<a class="navbar-brand" href="index.php"><?php echo $index["T-p"]; ?></a>
+			<a class="navbar-brand" href="index.php"><?php echo $index["T-h"]; ?></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>

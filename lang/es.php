@@ -17,9 +17,14 @@ $nav = array(
 );
 // index.php
 $index = array(
-	"MD" => "Academia de Coreano. Aprender Coreano (Hangul). Blog sobre Corea.",
-	"MK" => "Academia, Aprender,Coreano,Hangul,Blog,Corea",
-	"T-p" => "JKL Academia",
+	"MD" => "En la academia de idioma coreano de Jeongye aprenderas coreano de forma fácil y divertida. Te esperamos. Love Korea!❤",
+	"MK" => "Academia de coreano barcelona, aprender coreano barcelona, academia de idiomas barcelona, Academia de coreano, aprender coreano, academia de idiomas, idioma coreano, clases de coreano, clases online, clases presenciales, curso coreano, coreano online, aprender, Coreano, Hangul, Blog, Corea, blog sobre corea",
+	"T-p0" => "JKL Academia | Clases de coreano - Blog sobre corea",
+    "T-p4" => "JKL Academia | Comida",
+    "T-p5" => "JKL Academia | ¿Donde comer?",
+    "T-p6" => "JKL Academia | ¿Que visitar?",
+    "T-p7" => "JKL Academia | Costumbres",
+    "T-h" => "JKL Academia",
 	"T_01" => "Academia de idioma coreano de Jeongye",
   	"T_02" => "Ama Corea",
 	"M_A_T_01" => "¿Te gusta la cultura Coreana?",
@@ -33,7 +38,7 @@ $index = array(
 );
 // FormularioLogin.php
 $flogin = array(
-	"T-p" => "Login · JKL Academia",
+	"T-p" => "JKL Academia | Login",
 	"L_01" => "Bienvenido a <strong>JKL Academia</strong>.",
 	"L_02" => "Por favor accede a tu cuenta",
 	"L_03" => "← Volver a JKL Academia",
@@ -47,7 +52,7 @@ $login = array(
 );
 // ZonaAlumno.php
 $alumno = array (
- 	"T-p" => "Zona alumno · JKL Academia",
+ 	"T-p" => "JKL Academia | Zona alumno",
 	"Er" => "Para acceder a la Zona Alumnos es necesario ser alumno e identificarse.",
 );
 

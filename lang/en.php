@@ -17,9 +17,14 @@ $nav = array(
 );
 // index.php
 $index = array(
-	"MD" => "Korean Academy. Learn Korean (Hangul). Blog about Korea.",
-	"MK" => "Academy, Learn, Korean, Hangul, Blog, Korea",
-	"T-p" => "JKL Academy",
+	"MD" => "At Jeongye Korean Language Academy you will learn Korean in an easy and fun way. We will wait for you. Love Korea! ❤",
+	"MK" => "Korean academy barcelona, learn Korean barcelona, language academy barcelona, Korean academy, learn Korean, language academy, Korean language, Korean classes, online classes, face-to-face classes, Korean course, online Korean, learn, Korean, Hangul, Blog, Korea, Blog about Korea",
+	"T-p0" => "JKL Academy | Korean classes - Blog about Korea",
+    "T-p4" => "JKL Academy | Food",
+    "T-p5" => "JKL Academy | Where to eat?",
+    "T-p6" => "JKL Academy | What to visit?",
+    "T-p7" => "JKL Academy | Manners",
+    "T-h" => "JKL Academy",
 	"T_01" => "Jeongye's Korean Language Academy",
 	"T_02" => "Love Korea",
 	"M_A_T_01" => "Do you like Korean culture?",
@@ -33,7 +38,7 @@ $index = array(
 );
 // FormularioLogin.php
 $flogin = array(
-	"T-p" => "Login · JKL Academy",
+	"T-p" => "JKL Academy | Login",
 	"L_01" => "Welcome to <strong> JKL Academy</strong>.",
 	"L_02" => "Please access to your account",
 	"L_03" => "← Back to JKL Academy",
@@ -46,7 +51,7 @@ $login = array(
 	"01" => "To access the administrator it is necessary to enter a correct username and password",
 );
 $student = array (
-	"T-p" => "Student area · JKL Academia",
+	"T-p" => "JKL Academia | Student area",
 	"Er" => "To access the Students Area you must be a student and identify yourself.",
 );
 
